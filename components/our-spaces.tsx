@@ -64,9 +64,9 @@ export function OurSpaces() {
                   Location
                 </p>
                 <address className="not-italic font-sans text-[13.5px] text-[#935353] leading-[1.75]">
-                  Nisantasi
+                  Çankaya
                   <br />
-                  Istanbul, Turkiye
+                  Ankara, Turkiye
                 </address>
               </div>
               <div>

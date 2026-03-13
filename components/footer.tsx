@@ -28,7 +28,7 @@ export function Footer() {
             </Link>
             <p className="font-sans text-[12.5px] leading-[1.8] text-[#f8f4ee]/48 max-w-[300px] mb-8">
               A boutique cafe and patisserie — a house of atmosphere, craftsmanship, celebration,
-              and modern elegance. Nişantaşı, Istanbul.
+              and modern elegance. Çankaya, Ankara.
             </p>
             {/* Social links */}
             <nav aria-label="Social and contact links">
@@ -114,11 +114,12 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-[#f8f4ee]/6">
         <div className="max-w-[1440px] mx-auto px-8 lg:px-16 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-sans text-[10px] text-[#f8f4ee]/22 tracking-wide">
-            &copy; {new Date().getFullYear()} Atölye Norte. All rights reserved.
+          <p className="font-sans text-[10px] text-[#f8f4ee]/52 tracking-wide">
+            &copy; {new Date().getFullYear()} Atölye Norte. All rights reserved.<br></br>
+            <span>Powered by MF Digital Studio</span>
           </p>
-          <p className="font-serif italic text-[10px] text-[#f8f4ee]/18">
-            Crafted with care, in Istanbul.
+          <p className="font-serif italic text-[10px] text-[#f8f4ee]/52">
+            Crafted with care, in Ankara.
           </p>
         </div>
       </div>

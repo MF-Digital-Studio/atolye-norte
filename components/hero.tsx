@@ -40,7 +40,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-8 lg:px-16 w-full pb-24 lg:pb-32">
         <p className="font-sans text-[10px] tracking-[0.38em] text-[#d6b1b1] uppercase mb-7 opacity-0 animate-fade-in-up animation-delay-200">
-          Boutique Cafe &amp; Patisserie - Istanbul
+          Boutique Cafe &amp; Patisserie - Ankara
         </p>
         <h1
           className="font-serif font-light text-[#f8f4ee] leading-[0.92] tracking-[-0.015em] mb-8 opacity-0 animate-fade-in-up animation-delay-400"
