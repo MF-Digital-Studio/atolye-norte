@@ -7,9 +7,17 @@ type PillarCardMediaProps = {
   posterSrc: string
   videoSrc: string
   alt: string
+  isMobileActive: boolean
+  mobilePlayVersion: number
 }
 
-export function PillarCardMedia({ posterSrc, videoSrc, alt }: PillarCardMediaProps) {
+export function PillarCardMedia({
+  posterSrc,
+  videoSrc,
+  alt,
+  isMobileActive,
+  mobilePlayVersion,
+}: PillarCardMediaProps) {
   const cardRef = useRef<HTMLDivElement | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
 
@@ -53,7 +61,6 @@ export function PillarCardMedia({ posterSrc, videoSrc, alt }: PillarCardMediaPro
     )
 
     observer.observe(cardRef.current)
-
     return () => observer.disconnect()
   }, [canHover, prefersReducedMotion])
 
@@ -65,8 +72,29 @@ export function PillarCardMedia({ posterSrc, videoSrc, alt }: PillarCardMediaPro
     void video.play().catch(() => undefined)
   }
 
+  const resetToPoster = () => {
+    const video = videoRef.current
+    if (!video) return
+    video.pause()
+    video.currentTime = 0
+  }
+
   useEffect(() => {
-    if (!isHovered || !pendingPlay || !shouldLoadVideo || !canHover || prefersReducedMotion) return
+    if (canHover || prefersReducedMotion) return
+    if (!isMobileActive) {
+      setPendingPlay(false)
+      resetToPoster()
+      return
+    }
+
+    setShouldLoadVideo(true)
+    setPendingPlay(true)
+  }, [isMobileActive, canHover, prefersReducedMotion, mobilePlayVersion])
+
+  useEffect(() => {
+    const isInteractiveActive = canHover ? isHovered : isMobileActive
+    if (!isInteractiveActive || !pendingPlay || !shouldLoadVideo || prefersReducedMotion) return
+
     const video = videoRef.current
     if (!video) return
 
@@ -81,46 +109,35 @@ export function PillarCardMedia({ posterSrc, videoSrc, alt }: PillarCardMediaPro
       return
     }
 
-    const handleCanPlay = () => {
-      begin()
-    }
-
+    const handleCanPlay = () => begin()
     video.addEventListener("canplay", handleCanPlay, { once: true })
     video.load()
 
     return () => {
       video.removeEventListener("canplay", handleCanPlay)
     }
-  }, [isHovered, pendingPlay, shouldLoadVideo, canHover, prefersReducedMotion, videoSrc])
+  }, [canHover, isHovered, isMobileActive, pendingPlay, prefersReducedMotion, shouldLoadVideo, videoSrc])
 
-  const play = () => {
+  const handleMouseEnter = () => {
     if (!canHover || prefersReducedMotion) return
     setIsHovered(true)
     if (!shouldLoadVideo) setShouldLoadVideo(true)
     setPendingPlay(true)
-    playFromStart()
   }
 
-  const stop = () => {
+  const handleMouseLeave = () => {
+    if (!canHover) return
     setIsHovered(false)
     setPendingPlay(false)
-    const video = videoRef.current
-    if (!video) return
-    video.pause()
-    video.currentTime = 0
+    resetToPoster()
   }
 
-  const showVideo = isHovered && isVideoReady && canHover && !prefersReducedMotion
+  const isActive = (canHover ? isHovered : isMobileActive) && !prefersReducedMotion
+  const showVideo = isActive && isVideoReady
+  const shouldRenderVideo = shouldLoadVideo && !prefersReducedMotion
 
   return (
-    <div
-      ref={cardRef}
-      className="absolute inset-0"
-      onMouseEnter={play}
-      onMouseLeave={stop}
-      onFocus={play}
-      onBlur={stop}
-    >
+    <div ref={cardRef} className="absolute inset-0" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Image
         src={posterSrc}
         alt={alt}
@@ -131,7 +148,7 @@ export function PillarCardMedia({ posterSrc, videoSrc, alt }: PillarCardMediaPro
         sizes="(max-width: 768px) 100vw, 33vw"
       />
 
-      {shouldLoadVideo && canHover && !prefersReducedMotion ? (
+      {shouldRenderVideo ? (
         <video
           ref={videoRef}
           className={`pointer-events-none absolute inset-0 h-full w-full object-cover contrast-[1.06] saturate-[1.05] transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05] ${
