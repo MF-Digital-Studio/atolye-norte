@@ -1,0 +1,184 @@
+﻿@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Atolye Norte Brand Palette */
+  --brand-deep: #935353;
+  --brand-mid: #a06d6d;
+  --brand-soft: #d6b1b1;
+  --ivory-soft: #f8f4ee;
+  --off-white-warm: #f3ede4;
+  --taupe-soft: #e0d6cc;
+  --taupe-mid: #9a8b82;
+  --ink-soft: #4f3f3d;
+
+  /* Semantic tokens */
+  --background: var(--ivory-soft);
+  --foreground: var(--ink-soft);
+  --card: var(--off-white-warm);
+  --card-foreground: var(--ink-soft);
+  --popover: var(--ivory-soft);
+  --popover-foreground: var(--ink-soft);
+  --primary: var(--brand-deep);
+  --primary-foreground: var(--ivory-soft);
+  --secondary: var(--taupe-soft);
+  --secondary-foreground: #584645;
+  --muted: #ede4da;
+  --muted-foreground: var(--taupe-mid);
+  --accent: var(--brand-soft);
+  --accent-foreground: #523f3d;
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: var(--taupe-soft);
+  --input: #e8ddd2;
+  --ring: var(--brand-mid);
+  --radius: 0.125rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-jost), 'Jost', 'Avenir Next', sans-serif;
+  --font-serif: var(--font-eb-garamond), 'EB Garamond', Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-mid: var(--brand-mid);
+  --color-brand-soft: var(--brand-soft);
+  --color-ivory-soft: var(--ivory-soft);
+  --color-off-white-warm: var(--off-white-warm);
+  --color-taupe-soft: var(--taupe-soft);
+  --color-taupe-mid: var(--taupe-mid);
+  --color-ink-soft: var(--ink-soft);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-jost), 'Jost', 'Avenir Next', sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js-scroll-experience [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: saturate(0.94);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
+  }
+
+  .js-scroll-experience [data-reveal] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .js-scroll-experience [data-reveal] > *:nth-child(1) { transition-delay: 0.08s; }
+  .js-scroll-experience [data-reveal] > *:nth-child(2) { transition-delay: 0.16s; }
+  .js-scroll-experience [data-reveal] > *:nth-child(3) { transition-delay: 0.24s; }
+  .js-scroll-experience [data-reveal] > *:nth-child(4) { transition-delay: 0.32s; }
+  .js-scroll-experience [data-reveal] > *:nth-child(5) { transition-delay: 0.4s; }
+
+  .js-scroll-experience [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+    filter: saturate(1);
+  }
+
+  .js-scroll-experience [data-reveal].is-revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-eb-garamond), 'EB Garamond', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: var(--font-jost), 'Jost', 'Avenir Next', sans-serif;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
