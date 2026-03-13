@@ -27,10 +27,10 @@ export function OurSpaces() {
                 Opening Hours
               </p>
               <p className="font-sans text-[12.5px] text-[#f8f4ee]/88 leading-[2]">
-                Mon - Fri  �  08:00 - 20:00
+                Mon - Fri  -  08:00 - 20:00
               </p>
               <p className="font-sans text-[12.5px] text-[#f8f4ee]/88 leading-[2]">
-                Sat - Sun  �  09:00 - 21:00
+                Sat - Sun  -  09:00 - 21:00
               </p>
             </div>
           </div>
