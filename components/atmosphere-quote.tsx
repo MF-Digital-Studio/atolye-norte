@@ -6,7 +6,10 @@ export function AtmosphereQuote() {
       aria-label="Brand atmosphere quote"
     >
       <div className="max-w-[960px] mx-auto px-8 lg:px-16 text-center">
-        <div className="flex items-center justify-center gap-6 mb-14" aria-hidden="true">
+        <div
+          className="flex items-center justify-center gap-6 mb-14"
+          aria-hidden="true"
+        >
           <div className="w-20 h-px bg-[#d6b1b1]/30" />
           <div className="w-1.5 h-1.5 rounded-full bg-[#d6b1b1]" />
           <div className="w-20 h-px bg-[#d6b1b1]/30" />
@@ -19,11 +22,17 @@ export function AtmosphereQuote() {
           >
             "Where elegant desserts, warm coffee,
             <br className="hidden md:block" /> and{" "}
-            <span className="text-[#d6b1b1] not-italic font-normal">meaningful moments</span> meet."
+            <span className="text-[#d6b1b1] not-italic font-normal">
+              meaningful moments
+            </span>{" "}
+            meet."
           </p>
         </blockquote>
 
-        <div className="flex items-center justify-center gap-6 mt-14 mb-10" aria-hidden="true">
+        <div
+          className="flex items-center justify-center gap-6 mt-14 mb-10"
+          aria-hidden="true"
+        >
           <div className="w-20 h-px bg-[#d6b1b1]/30" />
           <div className="w-1.5 h-1.5 rounded-full bg-[#d6b1b1]" />
           <div className="w-20 h-px bg-[#d6b1b1]/30" />
@@ -34,5 +43,5 @@ export function AtmosphereQuote() {
         </p>
       </div>
     </section>
-  )
+  );
 }
