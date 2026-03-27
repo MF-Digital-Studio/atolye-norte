@@ -5,15 +5,18 @@ const menuCategories = [
     items: [
       {
         name: "Rose & Cardamom Layer",
-        description: "Rosewater cream, crushed cardamom sponge, edible gold leaf",
+        description:
+          "Rosewater cream, crushed cardamom sponge, edible gold leaf",
       },
       {
         name: "Atolye Noir",
-        description: "Dark Valrhona ganache, hazelnut dacquoise, smoked caramel",
+        description:
+          "Dark Valrhona ganache, hazelnut dacquoise, smoked caramel",
       },
       {
         name: "Pistachio & Violet Entremet",
-        description: "Iranian pistachio mousse, violet jelly, mirror glaze, sugar tuile",
+        description:
+          "Iranian pistachio mousse, violet jelly, mirror glaze, sugar tuile",
       },
     ],
   },
@@ -23,15 +26,18 @@ const menuCategories = [
     items: [
       {
         name: "Saffron Creme Brulee",
-        description: "Silken saffron custard, caramelized crust, dried violet garnish",
+        description:
+          "Silken saffron custard, caramelized crust, dried violet garnish",
       },
       {
         name: "Pear & Brown Butter Tart",
-        description: "Frangipane, poached Anjou pear, vanilla bean creme legere",
+        description:
+          "Frangipane, poached Anjou pear, vanilla bean creme legere",
       },
       {
         name: "Opera Revisited",
-        description: "Coffee-soaked joconde, dark chocolate ganache, espresso buttercream",
+        description:
+          "Coffee-soaked joconde, dark chocolate ganache, espresso buttercream",
       },
     ],
   },
@@ -41,7 +47,8 @@ const menuCategories = [
     items: [
       {
         name: "Atolye Cortado",
-        description: "Single origin espresso, micro-foamed oat, hand-thrown ceramic",
+        description:
+          "Single origin espresso, micro-foamed oat, hand-thrown ceramic",
       },
       {
         name: "Cold Brew Reserve",
@@ -49,11 +56,12 @@ const menuCategories = [
       },
       {
         name: "Spiced Masala Latte",
-        description: "House spice blend, steamed milk, a whisper of black pepper",
+        description:
+          "House spice blend, steamed milk, a whisper of black pepper",
       },
     ],
   },
-]
+];
 
 export function MenuHighlights() {
   return (
@@ -78,11 +86,14 @@ export function MenuHighlights() {
             >
               A curated selection,
               <br />
-              <em className="italic text-[#d6b1b1]">prepared with intention.</em>
+              <em className="italic text-[#d6b1b1]">
+                prepared with intention.
+              </em>
             </h2>
           </div>
           <p className="font-sans text-[13px] text-[#f8f4ee]/44 max-w-[270px] leading-[1.75] lg:pb-1 lg:self-end">
-            Each offering is seasonal, handcrafted, and subject to inspired change.
+            Her sunulan özelliği mevsimseldir, elle yapılmıştır ve ilham verici
+            değişikliklere a⌟ıktır.
           </p>
         </div>
 
@@ -90,8 +101,13 @@ export function MenuHighlights() {
           {menuCategories.map((cat) => (
             <div key={cat.category}>
               <div className="flex items-center gap-4 mb-10">
-                <p className="font-serif italic text-[#d6b1b1]/65 text-sm shrink-0">{cat.roman}</p>
-                <div className="flex-1 h-px bg-[#f8f4ee]/10" aria-hidden="true" />
+                <p className="font-serif italic text-[#d6b1b1]/65 text-sm shrink-0">
+                  {cat.roman}
+                </p>
+                <div
+                  className="flex-1 h-px bg-[#f8f4ee]/10"
+                  aria-hidden="true"
+                />
                 <p className="font-sans text-[9px] tracking-[0.3em] text-[#d6b1b1] uppercase shrink-0">
                   {cat.category}
                 </p>
@@ -117,13 +133,20 @@ export function MenuHighlights() {
         </div>
 
         <div className="flex items-center justify-center gap-7 mt-20 lg:mt-24">
-          <div className="h-px bg-[#f8f4ee]/10 flex-1 max-w-20" aria-hidden="true" />
+          <div
+            className="h-px bg-[#f8f4ee]/10 flex-1 max-w-20"
+            aria-hidden="true"
+          />
           <p className="font-serif italic text-[#f8f4ee]/45 text-sm text-center">
-            Our menu changes with the seasons. Please inquire for current offerings.
+            Our menu changes with the seasons. Please inquire for current
+            offerings.
           </p>
-          <div className="h-px bg-[#f8f4ee]/10 flex-1 max-w-20" aria-hidden="true" />
+          <div
+            className="h-px bg-[#f8f4ee]/10 flex-1 max-w-20"
+            aria-hidden="true"
+          />
         </div>
       </div>
     </section>
-  )
+  );
 }

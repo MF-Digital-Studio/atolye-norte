@@ -1,29 +1,31 @@
-﻿import { existsSync } from "node:fs"
-import path from "node:path"
-import { SignaturePillarsGrid } from "@/components/signature-pillars-grid"
+﻿import { existsSync } from "node:fs";
+import path from "node:path";
+import { SignaturePillarsGrid } from "@/components/signature-pillars-grid";
 
-const IMAGE_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "avif"]
-const VIDEO_EXTENSIONS = ["mp4", "webm", "mov"]
+const IMAGE_EXTENSIONS = ["png", "jpg", "jpeg", "webp", "avif"];
+const VIDEO_EXTENSIONS = ["mp4", "webm", "mov"];
 
 function resolvePublicAsset(basePath: string, extensions: string[]) {
-  const cleanBasePath = basePath.startsWith("/") ? basePath.slice(1) : basePath
+  const cleanBasePath = basePath.startsWith("/") ? basePath.slice(1) : basePath;
 
   for (const extension of extensions) {
-    const relativePath = `${cleanBasePath}.${extension}`
-    const absolutePath = path.join(process.cwd(), "public", relativePath)
+    const relativePath = `${cleanBasePath}.${extension}`;
+    const absolutePath = path.join(process.cwd(), "public", relativePath);
     if (existsSync(absolutePath)) {
-      return `/${relativePath.replace(/\\/g, "/")}`
+      return `/${relativePath.replace(/\\/g, "/")}`;
     }
   }
 
-  throw new Error(`Missing asset for ${basePath} with extensions: ${extensions.join(", ")}`)
+  throw new Error(
+    `Missing asset for ${basePath} with extensions: ${extensions.join(", ")}`,
+  );
 }
 
 const pillarAssetMap = [
   { posterBase: "/images/1", videoBase: "/videos/1_video" },
   { posterBase: "/images/2", videoBase: "/videos/2_video" },
   { posterBase: "/images/3", videoBase: "/videos/3_video" },
-] as const
+] as const;
 
 const experiences = [
   {
@@ -62,7 +64,7 @@ const experiences = [
     video: resolvePublicAsset(pillarAssetMap[2].videoBase, VIDEO_EXTENSIONS),
     alt: "A perfectly prepared cortado in an elegant ceramic cup at Atolye Norte cafe",
   },
-]
+];
 
 export function SignatureExperience() {
   return (
@@ -78,7 +80,9 @@ export function SignatureExperience() {
           <div>
             <div className="flex items-center gap-4 mb-7">
               <div className="w-8 h-px bg-[#d6b1b1]" />
-              <p className="font-sans text-[10px] tracking-[0.38em] text-[#d6b1b1] uppercase">The Experience</p>
+              <p className="font-sans text-[10px] tracking-[0.38em] text-[#d6b1b1] uppercase">
+                The Experience
+              </p>
             </div>
             <h2
               className="font-serif font-light text-[#f8f4ee] leading-[1.04] text-balance"
@@ -90,7 +94,8 @@ export function SignatureExperience() {
             </h2>
           </div>
           <p className="font-sans text-[13px] text-[#f8f4ee]/40 max-w-[290px] leading-[1.75] lg:pb-1 lg:self-end">
-            Each element of our offering is carefully considered - never rushed, never ordinary.
+            Each element of our offering is carefully considered - never rushed,
+            never ordinary.
           </p>
         </div>
 
@@ -98,5 +103,5 @@ export function SignatureExperience() {
         <SignaturePillarsGrid experiences={experiences} />
       </div>
     </section>
-  )
+  );
 }

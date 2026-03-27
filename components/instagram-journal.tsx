@@ -1,8 +1,8 @@
-import { getInstagramFeed } from "@/lib/instagram"
-import { InstagramCoverflow } from "@/components/instagram-coverflow"
+import { getInstagramFeed } from "@/lib/instagram";
+import { InstagramCoverflow } from "@/components/instagram-coverflow";
 
 export async function InstagramJournal() {
-  const feed = await getInstagramFeed()
+  const feed = await getInstagramFeed();
 
   return (
     <section
@@ -29,11 +29,13 @@ export async function InstagramJournal() {
           </div>
           <div className="max-w-[350px]">
             <p className="font-sans text-[13px] text-[#935353]/72 leading-[1.75]">
-              Daily details from our kitchen, coffee ritual, and celebratory commissions.
+              Mutfaktan g\u00fcnl\u00fck detaylar, kahve rituelü ve kutlama
+              siparitleçi.
             </p>
             {feed.source === "fallback" ? (
               <p className="font-sans text-[10px] tracking-[0.16em] uppercase text-[#9a8b82] mt-4">
-                Live feed unavailable. Showing curated placeholders.
+                Canl\u0131 ak\u0131\u015f kullan\u0131lamad\u0131. Se\u00e7kin
+                zaman tutucular g\u00f6sterilmektedir.
               </p>
             ) : null}
           </div>
@@ -53,5 +55,5 @@ export async function InstagramJournal() {
         </div>
       </div>
     </section>
-  )
+  );
 }

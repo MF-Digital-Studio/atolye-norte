@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
-  const imageRef = useRef<HTMLDivElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = imageRef.current
-    if (!el) return
+    const el = imageRef.current;
+    if (!el) return;
     const handleScroll = () => {
-      el.style.transform = `translateY(${window.scrollY * 0.22}px)`
-    }
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      el.style.transform = `translateY(${window.scrollY * 0.22}px)`;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section
@@ -23,7 +23,10 @@ export function Hero() {
       data-reveal
       aria-label="Hero - Atolye Norte"
     >
-      <div ref={imageRef} className="absolute inset-0 scale-[1.12] will-change-transform">
+      <div
+        ref={imageRef}
+        className="absolute inset-0 scale-[1.12] will-change-transform"
+      >
         <Image
           src="/images/hero-cake.jpg"
           alt="A luxury celebration cake by Atolye Norte - artisan detail, warm light, ivory and rose tones"
@@ -49,7 +52,6 @@ export function Hero() {
           Atolye
           <br />
           <em className="italic text-[#d6b1b1]">Norte.</em>
-
         </h1>
 
         <p
@@ -87,5 +89,5 @@ export function Hero() {
         <div className="w-px h-14 bg-[#f8f4ee]/25" />
       </div>
     </section>
-  )
+  );
 }

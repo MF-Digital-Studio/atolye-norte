@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export function Manifesto() {
   return (
@@ -10,12 +10,17 @@ export function Manifesto() {
     >
       <div className="max-w-[1440px] mx-auto px-8 lg:px-16">
         <div className="grid lg:grid-cols-[1fr_1.15fr] gap-16 lg:gap-32 items-center">
-
           {/* Image column */}
           <div className="relative order-2 lg:order-1">
             {/* Decorative offset frames */}
-            <div className="absolute -top-6 -left-6 w-36 h-36 border border-[#d6b1b1]/20 pointer-events-none" aria-hidden="true" />
-            <div className="absolute -bottom-6 -right-6 w-20 h-20 border border-[#d6b1b1]/15 pointer-events-none" aria-hidden="true" />
+            <div
+              className="absolute -top-6 -left-6 w-36 h-36 border border-[#d6b1b1]/20 pointer-events-none"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -bottom-6 -right-6 w-20 h-20 border border-[#d6b1b1]/15 pointer-events-none"
+              aria-hidden="true"
+            />
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
                 src="/images/manifesto-interior.jpg"
@@ -27,8 +32,12 @@ export function Manifesto() {
             </div>
             {/* Floating established badge */}
             <div className="absolute bottom-10 -right-4 lg:-right-12 bg-[#935353] px-7 py-6 shadow-xl">
-              <p className="font-serif italic text-[#f8f4ee]/70 text-base leading-none mb-1">Est.</p>
-              <p className="font-sans text-[#d6b1b1] text-[1.75rem] font-light tracking-[0.05em] leading-none">2019</p>
+              <p className="font-serif italic text-[#f8f4ee]/70 text-base leading-none mb-1">
+                Est.
+              </p>
+              <p className="font-sans text-[#d6b1b1] text-[1.75rem] font-light tracking-[0.05em] leading-none">
+                2019
+              </p>
             </div>
           </div>
 
@@ -52,13 +61,14 @@ export function Manifesto() {
 
             <div className="space-y-6 font-sans text-[15px] text-[#935353]/75 leading-[1.78] max-w-[490px] mb-8">
               <p>
-                Atölye Norte is not simply a place to enjoy desserts and coffee — it is an
-                experience defined by craftsmanship, visual refinement, and thoughtful curation.
+                Atölye Norte is not simply a place to enjoy desserts and coffee
+                — it is an experience defined by craftsmanship, visual
+                refinement, and thoughtful curation.
               </p>
               <p>
-                Every cake, every dessert, every cup is prepared with care, presented with beauty,
-                and served in an atmosphere that invites you to pause and celebrate the small
-                luxuries of life.
+                Every cake, every dessert, every cup is prepared with care,
+                presented with beauty, and served in an atmosphere that invites
+                you to pause and celebrate the small luxuries of life.
               </p>
             </div>
 
@@ -89,8 +99,5 @@ export function Manifesto() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-
-
